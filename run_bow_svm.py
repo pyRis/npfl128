@@ -53,8 +53,6 @@ dataset=np.array([np.array(xi) for xi in dataset])
 vectorizer = TfidfVectorizer(analyzer=lambda x: x, min_df=1).fit(dataset)
 word_index = vectorizer.vocabulary_
 encoded_data = vectorizer.transform(dataset)
-print ('Vocab sparse-encoded_data {} {}'.format(len(word_index), str(encoded_data.shape)))
-
 
 stratified_split = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=1).split(encoded_data, labels)
 train_indices, test_indices = next(stratified_split)
