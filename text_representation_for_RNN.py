@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# coding: utf-8
+
 from numpy import asarray
 from keras.preprocessing.text import Tokenizer
 from numpy import zeros
@@ -62,7 +65,7 @@ if __name__ == "__main__":
     '''
     Main function to load the data, and create embedding matrix from the data
     using GloVe, this is implemented the most naive method to do so, and this can
-    be implemented using standard library functions.
+    be better (and in fewer lines of codes) implemented using standard library functions.
     '''
 
     data = pd.read_csv('./data/stanford_data.csv')
@@ -74,6 +77,6 @@ if __name__ == "__main__":
     data = data.str.lower()
     data = data.str.replace("[(0-9)]", " ")
     data = data.apply(lambda x:' '.join(x.split()))
-    # here if no "data cleaning is required"
+    # here if no "data cleaning" is required.
 
     vocab_size = create_matrix(data)
